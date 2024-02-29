@@ -17,10 +17,10 @@
                 </li>
             @else    
                 <li class="nav-item" >
-                    <a class="nav-link" href="dashboard.php">Home</a>
+                    <a class="nav-link" href="dashboard">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                    <a class="nav-link" href="{{ route('products.index') }}">Students</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="news.php">News</a>

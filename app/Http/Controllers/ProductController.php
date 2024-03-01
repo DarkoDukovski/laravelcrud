@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -99,7 +99,10 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             // Delete the previous image if it exists
             if ($product->image) {
-                Storage::delete('public/assets/images/' . $product->image);
+                $imagePath = public_path('assets/images/' . $product->image);
+                if (File::exists($imagePath)) {
+                    File::delete($imagePath);
+                }
             }
 
             // Store the new image
@@ -129,6 +132,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product): RedirectResponse
     {
+        // Delete the product image if it exists
+        if ($product->image) {
+            $imagePath = public_path('assets/images/' . $product->image);
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+        }
+
         // Delete the product
         $product->delete();
 

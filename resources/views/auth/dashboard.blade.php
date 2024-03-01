@@ -12,7 +12,7 @@
                 <div class="card-body bg-primary">
                     <h5 class="card-title">Students</h5>
                     <i class="bi bi-people text-white" style="font-size: 3rem;"></i>
-                    <p class="card-text">Total Students: </p> <!-- Display student count here -->
+                    <p class="card-text text-white  ">Total Students:{{$studentCount}}</p>
                 </div>
             </div>
         </div>

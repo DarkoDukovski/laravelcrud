@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\ProductController;
 use Illuminate\Http\Request;
+
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -12,8 +14,19 @@ class DashboardController extends Controller
     
     public function index()
     {
-        
+
+        $studentCount = Product::count();
+
+    
+        $products = Product::latest()->paginate(5);
+        return view('auth.dashboard', compact('products', 'studentCount'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+
+
+
+    
 
     /**
      * Show the form for creating a new resource.

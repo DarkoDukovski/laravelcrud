@@ -1,7 +1,7 @@
 <?php
-  
+
 use Illuminate\Support\Facades\Route;
-  
+
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\DashboardController;
@@ -32,7 +32,7 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/university-api', 'university-api')->name('universityApi');   
     Route::get('/profile', 'profile')->name('profile');
 });
-Route::get('/dashboard', [DashboardController::class, 'index']);
-  
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('products', ProductController::class)->middleware('auth');

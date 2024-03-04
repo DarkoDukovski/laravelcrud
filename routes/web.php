@@ -33,6 +33,7 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/profile', 'profile')->name('profile');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
 
 Route::resource('products', ProductController::class)->middleware('auth');

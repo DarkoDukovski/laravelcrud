@@ -1,32 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\ProductController;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\News;
 
 class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    
     public function index()
     {
-
+        // Count students
         $studentCount = Product::count();
 
-    
-        $products = Product::latest()->paginate(5);
-        return view('auth.dashboard', compact('products', 'studentCount'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        // Count news
+        $totalNewsCount = News::count();
+
+        // Count active news
+        $activeNewsCount = News::where('status', true)->count();
+
+        // Count inactive news
+        $inactiveNewsCount = News::where('status', false)->count();
+
+        // Return the dashboard view with counts
+        return view('auth.dashboard', compact('studentCount', 'totalNewsCount', 'activeNewsCount', 'inactiveNewsCount'));
     }
-
-
-
-
-    
 
     /**
      * Show the form for creating a new resource.

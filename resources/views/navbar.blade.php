@@ -23,7 +23,7 @@
                     <a class="nav-link" href="{{ route('products.index') }}">Students</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="news.php">News</a>
+                    <a class="nav-link" href="{{ route('news.index') }}">News</a>
                 </li>
                 <li class="nav-item me-auto">
                     <a class="nav-link" href="university.php">API'S</a>

@@ -1,42 +1,39 @@
 @extends('auth.layouts')
 
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+<div class="container mt-4" style="padding: 120px;">
+    <div class="row justify-content-center"> <!-- Added justify-content-center to center align the cards -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card card1">
+                <div class="card-body bg-primary d-flex align-items-center justify-content-center flex-column"> <!-- Added flex-column to make the card content stack vertically -->
+                    <h5 class="card-title text-white mb-3">Total students {{ $studentCount }}</h5>
+                    <i class="bi bi-people text-white" style="font-size:3rem;"></i>
+                </div>
+            </div>
+        </div>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body bg-primary">
-                    <h5 class="card-title">Students</h5>
-                    <i class="bi bi-people text-white" style="font-size: 3rem;"></i>
-                    <p class="card-text text-white  ">Total Students:{{$studentCount}}</p>
+        <div class="col-lg-3 col-md-6">
+            <div class="card card2">
+                <div class="card-body bg-warning d-flex align-items-center justify-content-center flex-column"> <!-- Added flex-column to make the card content stack vertically -->
+                    <h5 class="card-title text-white mb-3">Total News {{ $totalNewsCount }}</h5>
+                    <i class="bi bi-people text-white" style="font-size:3rem;"></i>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body bg-warning">
-                    <h5 class="card-title">Total news</h5>
-                    <i class="bi bi-newspaper fs-1 text-white" style="font-size: 3rem;"></i>
+        <div class="col-lg-3 col-md-6">
+            <div class="card card3">
+                <div class="card-body bg-danger d-flex align-items-center justify-content-center flex-column"> <!-- Added flex-column to make the card content stack vertically -->
+                    <h5 class="card-title text-white mb-3">Active News {{ $activeNewsCount }}</h5>
+                    <i class="bi bi-newspaper text-white" style="font-size:3rem;"></i>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body bg-danger">
-                    <h5 class="card-title">Active news</h5>
-                    <i class="bi bi-newspaper fs-5 text-white" style="font-size: 3rem;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body bg-success">
-                    <h5 class="card-title">Inactive news</h5>
-                    <i class="bi bi-newspaper fs-5 text-white" style="font-size: 3rem;"></i>
+        <div class="col-lg-3 col-md-6">
+            <div class="card card4">
+                <div class="card-body bg-info d-flex align-items-center justify-content-center flex-column"> <!-- Added flex-column to make the card content stack vertically -->
+                    <h5 class="card-title text-white mb-3">Inactive News {{ $inactiveNewsCount }}</h5>
+                    <i class="bi bi-newspaper  text-white"style="font-size: 3rem;"></i>
                 </div>
             </div>
         </div>

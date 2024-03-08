@@ -7,7 +7,6 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 
-  
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +17,7 @@ use App\Http\Controllers\NewsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,18 +30,15 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
     Route::get('/students', 'students')->name('students');
-    Route::get('/news', 'news')->name('news');
     Route::get('/university-api', 'university-api')->name('universityApi');   
     Route::get('/profile', 'profile')->name('profile');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-
 Route::resource('products', ProductController::class)->middleware('auth');
 
-
-//news
+// News routes
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
@@ -49,5 +46,4 @@ Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->name('news.edit');
 Route::put('/news/{news}', [NewsController::class, 'update'])->name('news.update');
 Route::delete('/news/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
-
-
+Route::post('/news/filter', [NewsController::class, 'filterNews'])->name('news.filter');

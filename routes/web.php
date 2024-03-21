@@ -6,6 +6,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ApiController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +50,24 @@ Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->name('news.edi
 Route::put('/news/{news}', [NewsController::class, 'update'])->name('news.update');
 Route::delete('/news/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
 Route::post('/news/filter', [NewsController::class, 'filterNews'])->name('news.filter');
+
+
+// Api
+
+
+Route::get('/universities', [ApiController::class, 'index']);
+Route::get('/api/universities', [ApiController::class, 'index'])->name('api.universities');
+
+Route::get('/search-universities', [ApiController::class, 'search'])->name('search-universities');
+Route::match(['get', 'post'], '/fetch-universities', [ApiController::class, 'fetchUniversities'])->name('fetch-universities');
+
+
+Route::get('/active-news', [NewsController::class, 'showActiveNews'])->name('active.news');
+
+
+
+
+
+
+
+

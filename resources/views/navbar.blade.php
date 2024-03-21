@@ -26,8 +26,9 @@
                     <a class="nav-link" href="{{ route('news.index') }}">News</a>
                 </li>
                 <li class="nav-item me-auto">
-                    <a class="nav-link" href="university.php">API'S</a>
-                </li>
+                <a class="nav-link" href="{{ route('api.universities') }}">API's</a>
+              </li>
+
                 <li class="nav-item dropdown ms-auto">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }}

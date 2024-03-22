@@ -7,6 +7,12 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\PublicController;
+
+
+
+
+
 
 
 
@@ -66,7 +72,7 @@ Route::get('/active-news', [NewsController::class, 'showActiveNews'])->name('act
 
 
 
-
+Route::get('/', [PublicController::class, 'index'])->name('welcome');
 
 
 

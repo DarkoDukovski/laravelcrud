@@ -27,6 +27,57 @@
     </div>
   </nav>
 
+  <div class="container mt-4">
+        <div class="row">
+            @foreach ($activeNews as $article)
+                <div class="col-md-4 mt-3 news-article" data-status="{{ $article->status }}">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="card-title text-center">{{ $article->title }}</h4>
+                            <p class="card-text add-read-more show-less-content">{{ $article->description }}</p>
+                            <p class="card-text pt-2 fw-bolder">{{ $article->status == 1 ? 'Active' : 'Inactive' }}</p>
+                            <div class='d-flex justify-content-center mb-3'>
+                                <img class='news-image img-fluid' src="{{ asset('assets/images/' . $article->image)}}" width="300px" alt='News Image'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    //Read More and Read Less buttons
+    $(document).ready(function(){
+        var carLmt = 200;
+      // Text to show when text is collapsed
+      var readMoreTxt = " ...read more";
+      // Text to show when text is expanded
+      var readLessTxt = " read less";
+      //Traverse all selectors with this class and manipulate HTML part to show Read More
+      $(".add-read-more").each(function () {
+         if ($(this).find(".first-section").length)
+            return;
+         var allstr = $(this).text();
+         if (allstr.length > carLmt) {
+            var firstSet = allstr.substring(0, carLmt);
+            var secdHalf = allstr.substring(carLmt, allstr.length);
+            var strtoadd = firstSet + "<span class='second-section'>" + secdHalf + "</span><span class='read-more'  title='Click to Show More'>" + readMoreTxt + "</span><span class='read-less' title='Click to Show Less'>" + readLessTxt + "</span>";
+            $(this).html(strtoadd);
+         }
+      });
+      //Read More and Read Less Click Event binding
+      $(document).on("click", ".read-more,.read-less", function () {
+         $(this).closest(".add-read-more").toggleClass("show-less-content show-more-content");
+      });
+    });
+</script>
+
+
+
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,17 +1,15 @@
 @extends('products.layout')
-   
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Student</h2>
+                <h2>Edit Product</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
             </div>
         </div>
     </div>
-   
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -22,12 +20,23 @@
             </ul>
         </div>
     @endif
-  
-    <form action="{{ route('products.update',$product->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-   
          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>University:</strong>
+                    <select name="university_id" class="form-control">
+                        <option value="">Select University</option>
+                        @foreach ($universities as $university)
+                            <option value="{{ $university->id }}" {{ $product->university_id == $university->id ? 'selected' : '' }}>
+                                {{ $university->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Image:</strong>
@@ -81,6 +90,12 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-   
     </form>
 @endsection
+
+
+
+
+
+
+

@@ -75,10 +75,22 @@
                 <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">       
+                <strong>University:</strong>
+                <select name="university" class="form-control">
+                    <option value="">Select University</option>
+                    @foreach($universities as $university)
+                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                    @endforeach
+                   
+                </select>
+            </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
     </div>
-   
 </form>
 @endsection

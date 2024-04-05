@@ -49,14 +49,14 @@
 </html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    //Read More and Read Less buttons
+    
     $(document).ready(function(){
         var carLmt = 200;
-      // Text to show when text is collapsed
+     
       var readMoreTxt = " ...read more";
-      // Text to show when text is expanded
+     
       var readLessTxt = " read less";
-      //Traverse all selectors with this class and manipulate HTML part to show Read More
+     
       $(".add-read-more").each(function () {
          if ($(this).find(".first-section").length)
             return;
@@ -68,7 +68,7 @@
             $(this).html(strtoadd);
          }
       });
-      //Read More and Read Less Click Event binding
+     
       $(document).on("click", ".read-more,.read-less", function () {
          $(this).closest(".add-read-more").toggleClass("show-less-content show-more-content");
       });

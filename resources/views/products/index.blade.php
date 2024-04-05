@@ -17,7 +17,6 @@
    
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
             <th>Image</th>
             <th>Name</th>
             <th>Grade</th>
@@ -25,11 +24,12 @@
             <th>Phone</th>
             <th>Course</th>
             <th>Date of Birth</th>
+            <th>University ID</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $product)
         <tr>
-            <td>{{ ++$i }}</td>
+            
             <td>{{ $product->image }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->grade }}</td>
@@ -37,6 +37,10 @@
             <td>{{ $product->phone }}</td>
             <td>{{ $product->course }}</td>
             <td>{{ $product->dob }}</td>
+           
+           @isset($product->university->name)
+            <td>{{ $product->university->name }}</td>
+           @endisset 
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
@@ -50,6 +54,6 @@
         @endforeach
     </table>
   
-    {!! $products->links() !!}
+   
       
 @endsection
